@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <title>Products</title>
+  <link rel="stylesheet" href="header_footer.css">
+  <style>
+    .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        .item {
+            background-color: rgb(255, 255, 255);
+            border: 1px solid #d82d2d;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 15px;
+        }
+        .item a {
+            text-decoration: none;
+            color: #36078d;
+            font-weight: bold;
+        }
+        .item a:hover {
+            text-decoration: underline;
+            color: red;
+        }
+        .item img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        h2{
+          text-align: center;
+          margin: 5px 0px 10px 0px;
+          text-decoration: underline;
+        }
+    /* Responsive layout for smaller screens */
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for medium screens */
+      }
+    }
+
+    @media (max-width: 480px) {
+      .grid {
+        grid-template-columns: 1fr; /* 1 column for small screens */
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <img src="data:image/jpeg;base64,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" alt="Company Logo" class="logo"> <!-- Add your company logo URL here -->
+    <div class="container">
+      <h1 id="pageup"><u>Alok Kumar Nath</u></h1>
+      <p>Your Trusted Financial Partner</p>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="LIC_Profile.html">Profile</a></li>
+          <li><a href="LIC_Products.html">Products</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <!-- Services Section -->
+   <!--*************Health Products******************-->
+   <h2 id="endowment">ENDOWMENT PLANS</h2>
+  <div class="container">
+    <div class="grid">
+        <!-- Repeat this block for each item -->
+        <div class="item">
+            <a href="" target="_self">
+                <img src="https://lifeinsuranceofindia.in/wp-content/uploads/2021/04/lic-jeevan-labh-online.jpg" alt="LIC Insurance">
+                Jeevan Labh
+            </a>
+        </div>
+        <div class="item">
+            <a href="" target="_self">
+                <img src="https://i.pinimg.com/474x/ee/42/51/ee4251c08f9e27720277ccff3fd216fa.jpg" alt="LIC Insurance">
+                Jeevan Lakshy
+            </a>
+        </div>
+        <div class="item">
+            <a href="" target="_self">
+                <img src="https://5.imimg.com/data5/SELLER/Default/2024/6/428092566/AV/EN/ZQ/13038578/lic-new-jeevan-anand-plan.png" alt="LIC Insurance">
+                Jeevan Anand
+            </a>
+        </div>
+        <div class="item">
+            <a href="" target="_self">
+                <img src="https://licplanpremium.in/wp-content/uploads/2024/12/bima-jyoti.png" alt="LIC Insurance">
+                Bima Jyoti
+            </a>
+        </div>
+              <div class="item">
+            <a href="" target="_self">
+                <img src="https://insuredforlife.in/wp-content/uploads/2022/01/LICs-NEW-ENDOWMENT-PLUS-Plan-No-935.jpg" alt="LIC Insurance">
+                New Endowment
+            </a>
+        </div>
+        <div class="item">
+            <a href="" target="_self">
+                <img src="https://edetails.biz/licupdate/admin/Product_Image/213f0194caed6687ad9ffeeda64c22b1.png" alt="LIC Insurance">
+                Single Premium
+            </a>
+<!--         </div>
+        <div class="item">
+            <a href="" target="_self">
+                <img src="#" alt="LIC Insurance">
+                Bima Type new plan display name
+            </a>
+        </div> -->
+    </div>
+</div>
+<!--*******************************-->
+<br>
+<h2>MONEYBACK PLANS</h2>
+<div class="container">
+  <div class="grid">
+      <!-- Repeat this block for each item -->
+      <div class="item">
+          <a href="" target="_self">
+              <img src="https://policybaz.com/wp-content/uploads/2016/10/lic-20-moneyback-policy.jpg" alt="LIC Insurance">
+              Money Back 20
+          </a>
+      </div>
+    <div class="item">
+          <a href="" target="_self">
+              <img src="https://player.slideplayer.com/93/15538709/slides/slide_1.jpg" alt="LIC Insurance">
+              Bima Shree
+          </a>
+    </div>
+    
+  </div>
+</div>
+<!--*******************************-->
+<br>
+<h2>WHOLELIFE PLANS</h2>
+<div class="container">
+  <div class="grid">
+      <!-- Repeat this block for each item -->
+        <div class="item">
+            <a href="" target="_self">
+                <img src="https://5.imimg.com/data5/SELLER/Default/2021/1/CN/OO/IJ/12489256/hand-sanitizer-gel.jpeg" alt="LIC Insurance">
+                Jeevan Umang
+            </a>
+        </div>
+        <div class="item">
+            <a href="" target="_self">
+                <img src="https://5.imimg.com/data5/ANDROID/Default/2023/12/369147414/HZ/AE/MG/7614708/product-jpeg-500x500.jpg" alt="LIC Insurance">
+                Jeevan Utsav
+            </a>
+        </div>
+  </div>
+</div>
+<!--*******************************-->
+<br>
+<h2>CHILD PLANS</h2>
+<div class="container">
+  <div class="grid">
+      <!-- Repeat this block for each item -->
+      <div class="item" id="child">
+          <a href="" target="_self">
+              <img src="https://www.basunivesh.com/wp-content/uploads/2024/02/LICs-Amritbaal-8-GUARANTEED-Plan-for-Children.jpg" alt="LIC Insurance">
+              Amritbaal
+          </a>
+      </div>    
+      <div class="item" id="education">
+          <a href="" target="_self">
+              <img src="https://buypolicy.co.in/uploads/product/LIC%20Jeevan%20Tarun%20934.jpg" alt="LIC Insurance">
+              Jeevan Tarun
+          </a>
+      </div>
+  </div>
+</div>
+<!--*******************************-->
+<br>
+<h2 id="term">TERM PLANS</h2>
+<div class="container">
+  <div class="grid">
+      <!-- Repeat this block for each item -->
+      <div class="item">
+            <a href="" target="_self">
+                <img src="https://5.imimg.com/data5/SELLER/Default/2021/1/UO/SS/IN/12489256/jeevan-amar.jpeg" alt="LIC Insurance">
+                Jeevan Amar
+            </a>
+        </div>
+    
+  </div>
+</div>
+<!--*******************************-->
+<br>
+<h2 id="retirement">PENSION PLANS</h2>
+<div class="container">
+  <div class="grid">
+      <!-- Repeat this block for each item -->
+        <div class="item">
+            <a href="" target="_self">
+                <img src="https://lic-pension-plans.com/wp-content/uploads/2022/04/EuAWaVbVEAEZsWh.jpg" alt="LIC Insurance">
+                Jeevan Akshy
+            </a>
+        </div>
+        <div class="item">
+          <a href="" target="_self">
+              <img src="https://thane.licagent.co.in/wp-content/sabai/File/files/l_b679d6a1156efa5c538f59ea53fd9475.jpg" alt="LIC Insurance">
+              Jeevan Shanti
+          </a>
+        </div>
+        <div class="item">
+            <a href="" target="_self">
+                <img src="https://lic-pension-plans.com/wp-content/uploads/2022/12/Yuva-Pension-Plan-1024x1024.jpg" alt="LIC Insurance">
+                Yuva Pension
+            </a>
+        </div>
+  </div>
+</div> 
+<!--*******************************-->
+<br>
+<h2 id="ulip">ULIP PLANS</h2>
+<div class="container">
+  <div class="grid">
+      <!-- Repeat this block for each item -->
+        <div class="item">
+            <a href="" target="_self"><img src="https://buypolicy.co.in/uploads/product/LIC%20Index%20Plus%20Policy%20873.jpg" alt="LIC Insurance">
+              Index Plus SIP</a>
+        </div>
+        <div class="item">
+          <a href="" target="_self"><img src="https://scontent.fbom3-3.fna.fbcdn.net/v/t1.6435-9/196852947_4158309164191289_7317597264714908783_n.jpg?stp=dst-jpg_p526x296_tt6&_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_ohc=4RlnncSTcvMQ7kNvgGDus_u&_nc_zt=23&_nc_ht=scontent.fbom3-3.fna&_nc_gid=ANMoyyNT5pInLNdzmXqJphX&oh=00_AYAkD_q62vrPFVrD2Uj5wBTYTAF5BjtOXlL-jIo_4vua2Q&oe=679508AF" alt="LIC Insurance">
+            Lic's Nivesh Plus</a>
+        </div>
+    
+  </div>
+</div>
+<!--*************Health Products******************-->
+<br>
+<h2 id="health">Health Insurance</h2>
+<div class="container">
+  <div class="grid">
+      <!-- Repeat this block for each item -->
+      <div class="item">
+          <a href="" target="_self">
+              <img src="https://imgv2-1-f.scribdassets.com/img/document/633567046/original/6a82cb2124/1?v=1" alt="LIC Insurance">
+              Arogya Supreme
+          </a>
+      </div>
+      <div class="item">
+          <a href="" target="_self">
+              <img src="https://cdn.citymapia.com/changanassery/star-health-and-allied-insurance/65719/Portfolio.jpg?biz=9359" alt="LIC Insurance">
+              Star Health
+          </a>
+      </div>
+  </div>
+</div>
+<!--***********************************************-->
+  <br>
+  <h2>MICRO INSURANCE PLANS</h2>
+  <div class="container">
+    <div class="grid">
+        <!-- Repeat this block for each item -->
+        <div class="item">
+            <a href="" target="_self">
+                <img src="https://buypolicy.co.in/uploads/product/LIC%20Micro%20Bachat%20Plan%20951.jpg" alt="LIC Insurance">
+                Micro Bachat
+            </a>
+        </div>
+
+    </div>
+</div>
+<!--*************Vehicle Products******************-->
+
+
+<!--*************Calculator******************-->
+<br>
+<h2>CALCULATORS</h2>
+<div class="container">
+  <div class="grid">
+      <!-- Repeat this block for each item -->
+      <div class="item">
+          <a href="https://ebiz.licindia.in/D2CPM/?&_ga=2.2502002.312893476.1677125883-1841437327.1677125883#qni/basicinfo" target="_blank">
+              <img src="https://licpremiumcalculator.pro/wp-content/uploads/2023/06/LIC-Premium-Calculator.webp" alt="LIC Insurance">
+              Premium Calculator
+          </a>
+      </div>
+      <div class="item">
+          <a href="SWP Calculator.html" target="_blank">
+              <img src="https://d70qr9v5jzijw.cloudfront.net/12-july-24.jpg" alt="LIC Insurance">
+              SWP Calculator
+          </a>
+      </div>
+      <div class="item">
+          <a href="SIP_Calculator.html" target="_blank">
+              <img src="https://akm-img-a-in.tosshub.com/businesstoday/images/story/202408/66cec9f6f2e66-how-to-use-an-sip-calculator-285549538-16x9.jpg?size=948:533" alt="LIC Insurance">
+              SIP Calculator
+          </a>
+      </div>
+  </div>
+</div>
+  <!--*************Other Services******************-->
+<br>
+<h2>Other services</h2>
+<div class="container">
+  <div class="grid">
+      <!-- Repeat this block for each item -->
+      <div class="item">
+          <a href="https://ebiz.licindia.in/D2CPM/#DirectPay" target="_blank">
+              <img src="https://5.imimg.com/data5/FS/BL/GLADMIN-58323552/online-premium-payment.jpg" alt="LIC Insurance">
+              LIC Premium Payment
+          </a>
+      </div>
+      <div class="item">
+          <a href="https://enach.licindia.in/LICNACHClient/" target="_blank">
+              <img src="https://paycorp.io/blog/wp-content/uploads/2024/09/e-mandate-1.jpg" alt="LIC Insurance">
+              LIC eNACH eMandate
+          </a>
+      </div>
+  </div>
+</div>
+  
+
+<!--*************End Products Section******************-->
+
+   <!-- Footer Section -->
+   <footer>
+    <!-- Contact Section -->
+    <section id="contact">
+      <div class="container">
+        <h2>Contact Us</h2>
+        <!-- <p style="color: rgb(34, 33, 33);">If you have any queries or would like to avail our services, please contact us:</p> -->
+        <ul class="contact-details">
+          <li style="color: rgb(34, 33, 33); font-weight: bold;"> <u>Alok Kumar Nath</u></li>
+          <li style="color: rgb(34, 33, 33);"><strong>Address : </strong>Office No. 103, Omega Business Park, 1st Floor, Opposite Kamgar Hospital, Wagle Estate, Thane (West) - 400604</li>
+               <li><strong>Mobile:</strong> 
+            <img class="contact-icon" src="https://cdn-icons-png.flaticon.com/512/724/724664.png" alt="Phone Icon" width="20"> 
+            <a href="tel:8108743072">Call: 8108743072</a>
+          </li>
+          <li><strong>WhatsApp:</strong> 
+            <img class="contact-icon" src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WhatsApp Icon" width="20"> 
+            <a href="https://wa.me/9833913062" target="_blank">9833913062</a>
+          </li>
+          <li><strong></strong> 
+              <img class="contact-icon" src="https://cdn-icons-png.flaticon.com/512/281/281769.png" alt="Gmail Icon" width="20"> 
+              <a href="mailto:aloknath_62@yahoo.com" target="_blank">aloknath_62@yahoo.com</a>
+            </li>          
+      </div>
+    </section>  
+  
+      <div class="container">
+      <!--WhatsApp Chat floting-->
+      <a href="https://wa.me/9833913062" target="_blank"><div id="chat"></div> </a>
+      <a href="tel:8108743072" target="_blank"><div id="Mobile"></div> </a>
+      <a href="#pageup" target="_top"><div id="gotop"></div> </a>
+      </div>
+      <p>&copy; 2025 Maurya G Consultancy | All Rights Reserved</p>
+      <br><br>
+    </footer>
+</body>
+</html>
